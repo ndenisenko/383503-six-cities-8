@@ -1,10 +1,12 @@
-import Card from '../card/card';
+import CardList from '../card-list/card-list';
+import { Offers } from '../../types/offer';
 
 type MainProps = {
   cardsCount: number;
+  offers: Offers;
 }
 
-function Main({cardsCount} : MainProps): JSX.Element {
+function Main({cardsCount, offers} : MainProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -85,7 +87,7 @@ function Main({cardsCount} : MainProps): JSX.Element {
                     <use xlinkHref="#icon-arrow-select"></use>
                   </svg>
                 </span>
-                <ul className="places__options places__options--custom places__options--opened">
+                <ul className="places__options places__options--custom">
                   <li className="places__option places__option--active" tabIndex={0}>Popular</li>
                   <li className="places__option" tabIndex={0}>Price: low to high</li>
                   <li className="places__option" tabIndex={0}>Price: high to low</li>
@@ -93,10 +95,7 @@ function Main({cardsCount} : MainProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
+                <CardList offers={offers}/>
               </div>
             </section>
             <div className="cities__right-section">
