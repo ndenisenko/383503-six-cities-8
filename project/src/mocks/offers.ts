@@ -33,7 +33,7 @@ export const offers: Offer[] = [
     preview_image: 'img/apartment-small-04.jpg',
     price: 150,
     rating: 4.8,
-    title: 'Beautiful & luxurious studio at great location',
+    title: '1 Beautiful & luxurious studio at great location',
     type: 'apartment',
   },
   {
@@ -67,7 +67,7 @@ export const offers: Offer[] = [
     preview_image: 'img/apartment-small-03.jpg',
     price: 160,
     rating: 4.3,
-    title: 'Cozy hotel',
+    title: '2 Cozy hotel',
     type: 'hotel',
   },
   {
@@ -101,7 +101,7 @@ export const offers: Offer[] = [
     preview_image: 'img/apartment-small-04.jpg',
     price: 90,
     rating: 3,
-    title: 'some title',
+    title: '3 some title',
     type: 'house',
   },
 ];

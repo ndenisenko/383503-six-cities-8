@@ -1,10 +1,9 @@
-import { Offer } from '../types/offer';
-import { offers } from '../mocks/offers';
+import { Offer, Offers } from '../types/offer';
 
-export default function getOfferById(id: number) : Offer {
-  let result : Offer = offers[0];
+export default function getDataById(id: number, array: Offers) : Offer {
+  let result : Offer = array[0];
 
-  for (const offer of offers) {
+  for (const offer of array) {
     if (offer.id === id) {
       result =  offer;
     }

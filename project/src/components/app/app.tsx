@@ -19,6 +19,7 @@ type AppScreenProps = {
 };
 
 function App({offers, reviews} : AppScreenProps): JSX.Element {
+
   return (
     <BrowserRouter>
       <Switch>
@@ -32,7 +33,10 @@ function App({offers, reviews} : AppScreenProps): JSX.Element {
           <Login />
         </Route>
         <Route exact path={AppRoute.Property}>
-          <Property  />
+          <Property
+            offers={offers}
+            reviews={reviews}
+          />
         </Route>
         <PrivateRoute
           exact

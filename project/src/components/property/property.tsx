@@ -1,14 +1,22 @@
 /* eslint-disable camelcase */
-import Review from '../review/review';
-import getOfferById from '../../common/get-offer-by-id';
 import capitalizeFirstLetter from '../../common/uc-firts';
+import { Offers } from '../../types/offer';
+import { Reviews } from '../../types/review';
+import { useLocation } from 'react-router';
+import getDataById from '../../common/get-offer-by-id';
+import ReviewList from '../review-list/review-list';
 
+type PropertyProps = {
+  offers: Offers,
+  reviews: Reviews,
+}
 
-function Property() : JSX.Element {
-  const pathArray = window.location.pathname.split('/');
-  const offer = getOfferById(+pathArray[pathArray.length - 1]);
+function Property({offers, reviews} : PropertyProps) : JSX.Element {
+  const location = useLocation();
+  const pathArray = location.pathname.split('/');
+  const offer = getDataById(Number(pathArray[pathArray.length - 1]), offers);
 
-  const {rating, max_adults, bedrooms, type, price, goods, is_premium, description, host, images} = offer;
+  const {rating, max_adults, bedrooms, type, price, goods, is_premium, description, host, images, title} = offer;
   const {avatar_url, is_pro, name} = host;
 
   return (
@@ -62,7 +70,7 @@ function Property() : JSX.Element {
                 </div> : ''}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  Some name &amp; luxurious studio at great location
+                  {title}
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
@@ -123,36 +131,7 @@ function Property() : JSX.Element {
                   </p>
                 </div>
               </div>
-              <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
-                <ul className="reviews__list">
-                  <li className="reviews__item">
-                    <div className="reviews__user user">
-                      <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar" />
-                      </div>
-                      <span className="reviews__user-name">
-                        Max
-                      </span>
-                    </div>
-                    <div className="reviews__info">
-                      <div className="reviews__rating rating">
-                        <div className="reviews__stars rating__stars">
-                          <span style={{
-                            width: '80%'}}
-                          />
-                          <span className="visually-hidden">Rating</span>
-                        </div>
-                      </div>
-                      <p className="reviews__text">
-                        A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                      </p>
-                      <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
-                    </div>
-                  </li>
-                </ul>
-                <Review />
-              </section>
+              <ReviewList reviews={reviews} offer={offer}/>
             </div>
           </div>
           <section className="property__map map"></section>
