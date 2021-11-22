@@ -13,13 +13,13 @@ function Map({offers}: MapProps) : JSX.Element {
   const mapRef = useRef(null);
   const map = useMap({mapRef});
 
-  const defaultCustomIcon = new Icon({
-    iconUrl: DEFAULT_CUSTOM_ICON,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
-
   useEffect(() => {
+    const defaultCustomIcon = new Icon({
+      iconUrl: DEFAULT_CUSTOM_ICON,
+      iconSize: [40, 40],
+      iconAnchor: [20, 40],
+    });
+
     if (map) {
       offers.forEach((offer) => {
         const marker = new Marker({
