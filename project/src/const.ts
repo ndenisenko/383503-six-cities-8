@@ -11,4 +11,6 @@ enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export {AppRoute, AuthorizationStatus};
+const DEFAULT_CUSTOM_ICON = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+
+export {AppRoute, AuthorizationStatus, DEFAULT_CUSTOM_ICON};

@@ -1,5 +1,6 @@
 import CardList from '../card-list/card-list';
 import { Offers } from '../../types/offer';
+import Map from '../map/map';
 
 type MainProps = {
   cardsCount: number;
@@ -7,6 +8,7 @@ type MainProps = {
 }
 
 function Main({cardsCount, offers} : MainProps): JSX.Element {
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -99,7 +101,7 @@ function Main({cardsCount, offers} : MainProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map offers={offers}/>
             </div>
           </div>
         </div>
